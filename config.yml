@@ -1,28 +1,34 @@
-version: 1
 validation: sovereign
-accounts: 
+version: 1
+accounts:
 - name: alice
   coins:
-  - 20000token
-  - 200000000stake
+  - 20000safrocoin
+  - 200000000safrocoin
 - name: bob
   coins:
-  - 10000token
-  - 100000000stake
-client:
-  openapi:
-    path: docs/static/openapi.yml
+  - 10000safrocoin
+  - 100000000safrocoin
 faucet:
   name: bob
   coins:
-  - 5token
-  - 100000stake
+  - 50000000000safrocoin
+  - 100000safrocoin
+client:
+  typescript:
+    path: ts-client
+  composables:
+    path: vue/src/composables
+  hooks:
+    path: react/src/hooks
+  openapi:
+    path: docs/static/openapi.yml
 validators:
 - name: alice
-  bonded: 100000000stake
+  bonded: 100000000safrocoin
 - name: validator1
-  bonded: 100000000stake
+  bonded: 100000000safrocoin
 - name: validator2
-  bonded: 200000000stake
+  bonded: 200000000safrocoin
 - name: validator3
-  bonded: 300000000stake
+  bonded: 300000000safrocoin
