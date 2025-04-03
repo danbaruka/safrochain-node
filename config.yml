@@ -3,17 +3,17 @@ version: 1
 accounts:
 - name: alice
   coins:
-  - 20000safrocoin
-  - 200000000safrocoin
+  - 20000saf
+  - 200000000stake
 - name: bob
   coins:
-  - 10000safrocoin
-  - 100000000safrocoin
+  - 100000000000000000saf
+  - 100000000000000000stake
 faucet:
   name: bob
   coins:
-  - 50000000000safrocoin
-  - 100000safrocoin
+  - 5000000saf
+  - 100000stake
 client:
   typescript:
     path: ts-client
@@ -25,10 +25,21 @@ client:
     path: docs/static/openapi.yml
 validators:
 - name: alice
-  bonded: 100000000safrocoin
+  bonded: 100000000stake
 - name: validator1
-  bonded: 100000000safrocoin
+  bonded: 100000000stake
 - name: validator2
-  bonded: 200000000safrocoin
+  bonded: 200000000stake
 - name: validator3
-  bonded: 300000000safrocoin
+  bonded: 300000000stake
+genesis:
+  chain_id: safrochain
+
+#   ✔ Added account alice with address addr_safro17wghu3xkckesqfg206nh7re5pv89qlaq2hxz26 and mnemonic:
+# only genius siren bulb cattle educate cactus army curious enroll ahead quote dilemma solar sock absent color obvious purchase arrest round dentist picture menu
+
+# ✔ Added account bob with address addr_safro1p3q89us08p2dne7rkw3fjxftgj8mmtvmsjptk2 and mnemonic:
+# pizza allow alert swing member that kiss target jungle occur false impact divert shell armor nominee whip much debate soldier security path alone various
+
+# addr_safro1wvw6esxz039axskzk53m2k0pt2hgyn5dxjr3mk
+# casino pill fatigue file slide swamp unfold renew scrub exile sniff ribbon tone damp club despair clean vocal holiday chat occur title company hole
