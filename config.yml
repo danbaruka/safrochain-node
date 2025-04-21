@@ -1,19 +1,16 @@
 validation: sovereign
 version: 1
 accounts:
-- name: alice
-  coins:
-  - 20000saf
-  - 200000000stake
-- name: bob
-  coins:
-  - 100000000000000000saf
-  - 100000000000000000stake
+  - name: alice
+    coins:
+      - 20000saf
+  - name: bob
+    coins:
+      - 100000000000000000saf
 faucet:
   name: bob
   coins:
-  - 5000000saf
-  - 100000stake
+    - 5000000saf
 client:
   typescript:
     path: ts-client
@@ -24,14 +21,14 @@ client:
   openapi:
     path: docs/static/openapi.yml
 validators:
-- name: alice
-  bonded: 100000000stake
-- name: validator1
-  bonded: 100000000stake
-- name: validator2
-  bonded: 200000000stake
-- name: validator3
-  bonded: 300000000stake
+  - name: alice
+    bonded: 100000000saf
+  - name: validator1
+    bonded: 100000000saf
+  - name: validator2
+    bonded: 200000000saf
+  - name: validator3
+    bonded: 300000000saf
 genesis:
   chain_id: safrochain
 
