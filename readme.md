@@ -607,8 +607,7 @@ echo "Visit https://faucet.safrochain.com, paste your address, and request 2,500
 ```bash
 # Check sync status
 curl http://localhost:26657/status | jq '.result.sync_info'
-# Wait for catching_up: false
-watch -n 10 "curl -s http://localhost:26657/status | jq '.result.sync_info'"
+
 # Get validator public key
 PUBKEY=$(safrochaind tendermint show-validator --home $HOME_NODE)
 # Create validator.json
