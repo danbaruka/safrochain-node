@@ -614,7 +614,7 @@ PUBKEY=$(safrochaind tendermint show-validator --home $HOME_NODE)
 cat > $HOME/validator.json <<EOL
 {
   "pubkey": $PUBKEY,
-  "amount": "2500000000saf",
+  "amount": "2000000000saf",
   "moniker": "$MONIKER",
   "identity": "",
   "website": "",
