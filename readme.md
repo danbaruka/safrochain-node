@@ -15,7 +15,7 @@ Before starting, ensure you have the following:
 - **Internet**: Stable connection for cloning repositories, downloading the genesis file, and syncing the blockchain.
 - **Permissions**: Root/admin access (`sudo` on Linux/macOS, admin terminal in WSL2) for installing packages and configuring firewalls.
 - **Testnet Configuration**:
-  - **Main Node**: `d172b3424a96ebbb806cd19e09d6976db9bb68ea@88.99.211.113:26656`
+  - **Main Node**: `68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656`
   - **Genesis File**: `https://safrochain.com/genesis/testnet/genesis.json`
   - **Faucet**: `https://faucet.safrochain.com` (provides 2,500,000,000 `saf` = 2,500 `hela` per request)
 - **Testnet Denominations**: Uses `saf` (base unit) and `hela` (1 `hela` = 1,000,000 `saf`) for transactions.
@@ -365,7 +365,7 @@ pprof_laddr = "localhost:6060"
 [p2p]
 laddr = "tcp://0.0.0.0:26656"
 external_address = "$EXTERNAL_IP:26656"
-seeds = "d172b3424a96ebbb806cd19e09d6976db9bb68ea@88.99.211.113:26656"
+seeds = "68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656"
 persistent_peers = ""
 pex = true
 
@@ -412,7 +412,7 @@ EOL
 
 **Notes**:
 - **Gas prices**: Set to `0.001saf` to match your denomination. If the testnet uses `tSaf` (per the original guide), replace with `0.001tSaf`.
-- **Seeds**: Configures the main node `d172b3424a96ebbb806cd19e09d6976db9bb68ea@88.99.211.113:26656` for syncing.
+- **Seeds**: Configures the main node `68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656` for syncing.
 - **External IP**: Defaults to `127.0.0.1` for local operation. For public nodes, enter your server’s IP.
 - Enables API (`1317`), gRPC (`9090`), and P2P (`26656`) ports.
 - The `$MONIKER` variable uses the value from Step 3.
@@ -427,7 +427,7 @@ EOL
   ```bash
   grep seeds $HOME_NODE/config/config.toml
   ```
-  **Expected Output**: `seeds = "d172b3424a96ebbb806cd19e09d6976db9bb68ea@88.99.211.113:26656"`
+  **Expected Output**: `seeds = "68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656"`
 
 **Troubleshooting**:
 - **Files not created**: Ensure `$HOME_NODE` is set (`echo $HOME_NODE`) and you have write permissions.
@@ -523,7 +523,7 @@ fi
 **Notes**:
 - Resets node state to ensure a clean start.
 - Logs are saved to `$HOME_NODE/safrochaind.log` for debugging.
-- The node connects to the main node (`d172b3424a96ebbb806cd19e09d6976db9bb68ea@88.99.211.113:26656`) specified in `config.toml`.
+- The node connects to the main node (`68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656`) specified in `config.toml`.
 
 **Verification**:
 - Check logs:
