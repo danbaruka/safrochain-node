@@ -445,8 +445,12 @@ EOL
 
 #### Linux (Ubuntu) / Windows (WSL2)
 ```bash
-sudo ufw allow 26656,26657,1317,9090
-sudo ufw deny 26658,6060
+sudo ufw allow 26656
+sudo ufw allow 26657
+sudo ufw allow 1317
+sudo ufw allow 9090
+sudo ufw deny 26658
+sudo ufw deny 6060
 sudo ufw enable
 ```
 
