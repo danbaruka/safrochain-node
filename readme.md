@@ -733,3 +733,5 @@ This guide is based on the Safrochain node setup process, licensed under the [MI
 ## 🙌 Acknowledgments
 
 Safrochain is built using the [Cosmos SDK](https://github.com/cosmos/cosmos-sdk) and [CometBFT](https://github.com/cometbft/cometbft). Special thanks to the Safrochain community for their contributions!
+
+
