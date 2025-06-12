@@ -17,7 +17,7 @@ Before starting, ensure you have the following:
 - **Testnet Configuration**:
   - **Main Node**: `68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656`
   - **Genesis File**: `https://genesis.safrochain.com/testnet/genesis.json`
-  - **Faucet**: `https://faucet.safrochain.com` (provides 2,500,000,000 `saf` = 2,500 `hela` per request)
+  - **Faucet**: `https://faucet.safrochain.com` (provides 25,000,000 `saf` = 25 `hela` per request)
 - **Testnet Denominations**: Uses `saf` (base unit) and `hela` (1 `hela` = 1,000,000 `saf`) for transactions.
 - **Home Directory**: Node configuration and data stored in `$HOME_NODE` (you’ll set this to a custom path, e.g., `$HOME/.safrochain`).
 
@@ -568,12 +568,12 @@ read WALLET_NAME
 safrochaind keys add "$WALLET_NAME" --keyring-backend os --home $HOME_NODE
 WALLET_ADDRESS=$(safrochaind keys show "$WALLET_NAME" -a --home $HOME_NODE)
 echo "Your wallet address is: $WALLET_ADDRESS"
-echo "Visit https://faucet.safrochain.com, paste your address, and request 2,500,000,000 saf (2,500 hela)."
+echo "Visit https://faucet.safrochain.com, paste your address, and request 25,000,000 saf (25 hela)."
 ```
 
 **Notes**:
 - The command outputs a **mnemonic phrase**. Save it securely offline (e.g., write it down, don’t store digitally).
-- Visit `https://faucet.safrochain.com`, paste `$WALLET_ADDRESS`, and request 2,500,000,000 `saf` (2,500 `hela`).
+- Visit `https://faucet.safrochain.com`, paste `$WALLET_ADDRESS`, and request 25,000,000 `saf` (25 `hela`).
 - Addresses use the `addr_safro` prefix (not `taddr_safro`, as your configuration specifies `saf`).
 
 **Verification**:
@@ -639,7 +639,7 @@ safrochaind tx staking create-validator $HOME/validator.json \
 
 **Notes**:
 - **Sync status**: The node must be fully synced before creating a validator. The `watch` command checks every 10 seconds.
-- **Amount**: Stakes 2,500,000,000 `saf` (2,500 `hela`), matching the faucet amount. Adjust if you receive more/less tokens.
+- **Amount**: Stakes 25,000,000 `saf` (25 `hela`), matching the faucet amount. Adjust if you receive more/less tokens.
 - **Fees**: Set to `5000saf` (0.005 `hela`). If the testnet uses `tSaf`, replace `saf` with `tSaf` in `amount` and `--fees`.
 - The `$MONIKER` variable uses the value from Step 3.
 - **Alternative denominations**: If the testnet uses `hela`, set `"amount": "2500hela"` and `--fees 5hela`.
