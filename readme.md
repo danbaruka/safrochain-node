@@ -586,7 +586,7 @@ echo "Visit https://faucet.safrochain.com, paste your address, and request 2,500
   ```bash
   safrochaind query bank balances "$WALLET_ADDRESS" --home $HOME_NODE
   ```
-  **Expected Output**: Shows `2500000000saf` if funded.
+  **Expected Output**: Shows `25000000saf` if funded.
 
 **Troubleshooting**:
 - **Faucet fails**: If `https://faucet.safrochain.com` is down, join Safrochain’s community (GitHub, Discord, Telegram) for tokens.
