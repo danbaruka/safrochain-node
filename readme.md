@@ -16,7 +16,7 @@ Before starting, ensure you have the following:
 - **Permissions**: Root/admin access (`sudo` on Linux/macOS, admin terminal in WSL2) for installing packages and configuring firewalls.
 - **Testnet Configuration**:
   - **Main Node**: `68c1f7e9df7513d8f707bf5d312333a2e6992075@88.99.211.113:26656`
-  - **Genesis File**: `https://safrochain.com/genesis/testnet/genesis.json`
+  - **Genesis File**: `https://genesis.safrochain.com/testnet/genesis.json`
   - **Faucet**: `https://faucet.safrochain.com` (provides 2,500,000,000 `saf` = 2,500 `hela` per request)
 - **Testnet Denominations**: Uses `saf` (base unit) and `hela` (1 `hela` = 1,000,000 `saf`) for transactions.
 - **Home Directory**: Node configuration and data stored in `$HOME_NODE` (you’ll set this to a custom path, e.g., `$HOME/.safrochain`).
@@ -253,13 +253,13 @@ safrochaind init "$MONIKER" --chain-id safrochain-testnet --home $HOME_NODE
 
 ### Step 4: Configure Genesis File
 
-**What it does**: Downloads the official testnet `genesis.json` from `https://safrochain.com/genesis/testnet/genesis.json` and places it in `$HOME_NODE/config/`.
+**What it does**: Downloads the official testnet `genesis.json` from `https://genesis.safrochain.com/testnet/genesis.json` and places it in `$HOME_NODE/config/`.
 
 **Prerequisites**: Internet access and `$HOME_NODE/config/` created (Step 3).
 
 **Code**:
 ```bash
-curl -L -o $HOME_NODE/config/genesis.json https://safrochain.com/genesis/testnet/genesis.json
+curl -L -o $HOME_NODE/config/genesis.json https://genesis.safrochain.com/testnet/genesis.json
 if [ -f "$HOME_NODE/config/genesis.json" ]; then
     echo "genesis.json downloaded successfully."
 else
@@ -512,7 +512,7 @@ else
     echo "Error: Node failed to start. Check $HOME_NODE/safrochaind.log for details."
     echo "Possible issues and fixes:"
     echo "1. Validator set empty: Verify Step 4 (genesis.json download)."
-    echo "2. Redownload genesis.json: curl -L -o $HOME_NODE/config/genesis.json https://safrochain.com/genesis/testnet/genesis.json"
+    echo "2. Redownload genesis.json: curl -L -o $HOME_NODE/config/genesis.json https://genesis.safrochain.com/testnet/genesis.json"
     echo "3. Reset state: safrochaind tendermint unsafe-reset-all --home $HOME_NODE"
     echo "4. Contact Safrochain’s community for an updated genesis file."
     echo "5. OE hash mismatch: Disable OE by adding 'optimistic_execution_enabled = false' under [consensus] in $HOME_NODE/config/config.toml"
@@ -541,7 +541,7 @@ fi
 - **Node not starting**: Check logs (`tail -n 20 $HOME_NODE/safrochaind.log`).
 - **Validator set empty**:
   - Verify genesis file (`jq . $HOME_NODE/config/genesis.json`).
-  - Redownload: `curl -L -o $HOME_NODE/config/genesis.json https://safrochain.com/genesis/testnet/genesis.json`.
+  - Redownload: `curl -L -o $HOME_NODE/config/genesis.json https://genesis.safrochain.com/testnet/genesis.json`.
   - Reset state: `safrochaind tendermint unsafe-reset-all --home $HOME_NODE`.
 - **OE hash mismatch**:
   - Disable OE:
@@ -700,7 +700,7 @@ safrochaind tx staking create-validator $HOME/validator.json \
   - Check logs: `tail -n 20 $HOME_NODE/safrochaind.log`.
   - Verify genesis file: `jq . $HOME_NODE/config/genesis.json`.
 - **Empty validator set**:
-  - Redownload genesis: `curl -L -o $HOME_NODE/config/genesis.json https://safrochain.com/genesis/testnet/genesis.json`.
+  - Redownload genesis: `curl -L -o $HOME_NODE/config/genesis.json https://genesis.safrochain.com/testnet/genesis.json`.
   - Reset state: `safrochaind tendermint unsafe-reset-all --home $HOME_NODE`.
   - Contact Safrochain’s community for the correct genesis file.
 - **OE hash mismatch**:
