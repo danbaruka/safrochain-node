@@ -1,4 +1,4 @@
-# Safrochain Validator Setup and Maintenance Guide (Professional Edition)
+# Safrochain Validator Setup and Maintenance Guide
 
 This guide provides a comprehensive and professional walkthrough to setting up and maintaining a validator node on the Safrochain testnet. It includes secure wallet creation, key management, validator registration, profile updates, recovery processes, unjailing procedures, redelegation, and reward handling.
 
