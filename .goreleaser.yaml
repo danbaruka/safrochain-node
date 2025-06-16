@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
+
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+
+project_name: safrochaind
+
+builds:
+  - id: safrochaind
+    main: ./cmd/safrochaind
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - >-
+        -s -w
+        -X github.com/cosmos/cosmos-sdk/version.Name=Safrochain
+        -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}}
+    binary: safrochaind
+
+archives:
+  - id: safrochaind-archive
+    builds:
+      - safrochaind
+    format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ if eq .Arch "amd64" }}x86_64{{ else if eq .Arch "386" }}i386{{ else }}{{ .Arch }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
+      - README.md
+
+checksum:
+  name_template: "checksums.txt"
+
+signs:
+  - artifacts: checksum
+    args: ["--detach-sign"]
+
+release:
+  github:
+    owner: Safrochain
+    name: safrochain-node
+  draft: false
+  prerelease: "false"
+  footer: |
+
+    ---
+
+    Released by [GoReleaser](https://goreleaser.com)
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
