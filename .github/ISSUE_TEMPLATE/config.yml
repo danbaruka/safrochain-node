@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue
+    url: https://github.com/danbaruka/safrochain-node/blob/main/SECURITY.md
+    about: Do not open public issues for vulnerabilities. Follow SECURITY.md for private disclosure.
+  - name: Ask a question
+    url: https://github.com/danbaruka/safrochain-node/discussions
+    about: Usage and general questions — use Discussions when unsure if it is a bug.

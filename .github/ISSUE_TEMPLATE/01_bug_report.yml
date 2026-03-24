@@ -1,0 +1,86 @@
+name: Bug report
+description: Something is broken or behaves incorrectly
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please search [existing issues](https://github.com/danbaruka/safrochain-node/issues) before submitting.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Suggested priority
+      description: Rough impact; maintainers may adjust labels after triage.
+      options:
+        - P0 — production down / consensus or funds at risk
+        - P1 — major breakage, no reasonable workaround
+        - P2 — moderate impact or workaround exists
+        - P3 — minor / cosmetic
+        - Unknown / needs triage
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Node / daemon (safrochaind)
+        - CLI
+        - Build / CI / release
+        - Docker
+        - Tests
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: version
+    attributes:
+      label: Version & environment
+      description: Output of `safrochaind version` (or commit), OS, and how you run the node (binary, Docker, source).
+      placeholder: |
+        safrochaind version: ...
+        OS: ...
+        Commit / tag: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps or config. Prefer text logs over screenshots.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / backtrace
+      description: Paste relevant logs or stack traces here.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues for duplicates
+          required: true

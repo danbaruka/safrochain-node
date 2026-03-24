@@ -1,0 +1,56 @@
+name: Task / chore / docs
+description: Refactor, documentation, CI, or internal work (not a user-facing bug or feature)
+title: "[Task] "
+labels:
+  - enhancement
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type of work
+      options:
+        - Documentation
+        - Refactor / tech debt
+        - CI / automation
+        - Tests
+        - Release / packaging
+        - Dependencies
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Suggested priority
+      options:
+        - P1 — should do soon
+        - P2 — normal backlog
+        - P3 — when time allows
+        - Unknown / needs triage
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: Background
+      description: Context, links to PRs, related issues.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What “done” looks like (checklist is fine).
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: This is not a duplicate of an existing issue
+          required: true
