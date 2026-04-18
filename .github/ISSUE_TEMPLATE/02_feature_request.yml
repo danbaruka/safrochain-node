@@ -1,0 +1,73 @@
+name: Feature request
+description: Propose a new capability or improvement
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For large design changes, consider opening a Discussion first to align on direction.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Suggested priority
+      options:
+        - P0 — blocking release or critical capability
+        - P1 — high value, should plan soon
+        - P2 — nice to have this quarter
+        - P3 — backlog / future
+        - Unknown / needs triage
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Protocol / consensus
+        - APIs (gRPC / REST / CLI)
+        - Performance
+        - Developer experience
+        - Operations / observability
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One short paragraph on what you want and why.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What pain exists today? Who benefits?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Concrete behavior, APIs, or implementation notes if you have them.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you considered and tradeoffs.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues and discussions for duplicates
+          required: true
