@@ -42,21 +42,41 @@ import (
 	"github.com/Safrochain_Org/safrochain/app"
 )
 
+const (
+	// MainnetPrefix is the Bech32 human-readable part for mainnet addresses.
+	MainnetPrefix = "safro"
+	// TestnetPrefix is the Bech32 human-readable part for testnet addresses.
+	TestnetPrefix = "addr_safro"
+)
+
+// getBech32Prefix inspects os.Args for --mainnet before Cobra parses flags.
+// This is necessary because sdk.GetConfig().Seal() must be called early in
+// NewRootCmd, before Cobra has parsed any flags.
+func getBech32Prefix() string {
+	for _, arg := range os.Args[1:] {
+		if arg == "--mainnet" || arg == "--mainnet=true" {
+			return MainnetPrefix
+		}
+	}
+	return TestnetPrefix
+}
+
 var (
-	// Bech32Prefix defines the Bech32 prefix of an account's address
-	Bech32Prefix = "addr_safro"
+	// Bech32Prefix is the active base prefix, set in NewRootCmd before cfg.Seal().
+	// Defaults to TestnetPrefix; overridden to MainnetPrefix when --mainnet is passed.
+	Bech32Prefix = TestnetPrefix
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
-	Bech32PrefixAccAddr = Bech32Prefix
+	Bech32PrefixAccAddr = TestnetPrefix
 	// Bech32PrefixAccPub defines the Bech32 prefix of an account's public key
-	Bech32PrefixAccPub = Bech32Prefix + sdk.PrefixPublic
+	Bech32PrefixAccPub = TestnetPrefix + sdk.PrefixPublic
 	// Bech32PrefixValAddr defines the Bech32 prefix of a validator's operator address
-	Bech32PrefixValAddr = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixOperator
+	Bech32PrefixValAddr = TestnetPrefix + sdk.PrefixValidator + sdk.PrefixOperator
 	// Bech32PrefixValPub defines the Bech32 prefix of a validator's operator public key
-	Bech32PrefixValPub = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixOperator + sdk.PrefixPublic
+	Bech32PrefixValPub = TestnetPrefix + sdk.PrefixValidator + sdk.PrefixOperator + sdk.PrefixPublic
 	// Bech32PrefixConsAddr defines the Bech32 prefix of a consensus node address
-	Bech32PrefixConsAddr = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixConsensus
+	Bech32PrefixConsAddr = TestnetPrefix + sdk.PrefixValidator + sdk.PrefixConsensus
 	// Bech32PrefixConsPub defines the Bech32 prefix of a consensus node public key
-	Bech32PrefixConsPub = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixConsensus + sdk.PrefixPublic
+	Bech32PrefixConsPub = TestnetPrefix + sdk.PrefixValidator + sdk.PrefixConsensus + sdk.PrefixPublic
 
 	autoCliOpts autocli.AppOptions
 )
@@ -66,6 +86,15 @@ var (
 func NewRootCmd() *cobra.Command {
 	tempDir := tempDir()
 	sdk.DefaultBondDenom = "usaf"
+
+	Bech32Prefix = getBech32Prefix()
+	Bech32PrefixAccAddr = Bech32Prefix
+	Bech32PrefixAccPub = Bech32Prefix + sdk.PrefixPublic
+	Bech32PrefixValAddr = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixOperator
+	Bech32PrefixValPub = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixOperator + sdk.PrefixPublic
+	Bech32PrefixConsAddr = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixConsensus
+	Bech32PrefixConsPub = Bech32Prefix + sdk.PrefixValidator + sdk.PrefixConsensus + sdk.PrefixPublic
+
 	cfg := sdk.GetConfig()
 	cfg.SetBech32PrefixForAccount(Bech32PrefixAccAddr, Bech32PrefixAccPub)
 	cfg.SetBech32PrefixForValidator(Bech32PrefixValAddr, Bech32PrefixValPub)
@@ -164,6 +193,11 @@ func NewRootCmd() *cobra.Command {
 			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, customCmtConfig)
 		},
 	}
+
+	// Register --mainnet so Cobra doesn't reject it as an unknown flag.
+	// The actual prefix selection happens via getBech32Prefix() above, which
+	// pre-scans os.Args before cfg.Seal() is called.
+	rootCmd.PersistentFlags().Bool("mainnet", false, "Use mainnet address prefix (safro) instead of testnet prefix (addr_safro)")
 
 	initRootCmd(
 		rootCmd,
